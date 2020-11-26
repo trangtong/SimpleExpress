@@ -3,8 +3,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const hbs = require('hbs');
 
-const indexRouter = require('./routes/index');
+const homeRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const aboutRouter = require('./routes/about');
 const checkoutRouter = require('./routes/checkout');
@@ -13,7 +14,6 @@ const faqRouter = require('./routes/faq');
 const productsRouter = require('./routes/products');
 const registerRouter = require('./routes/register');
 const signInRouter = require('./routes/signIn');
-const detailsRouter = require('./routes/details');
 
 const app = express();
 
@@ -22,14 +22,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.set('view options', {layout: false});
 
+hbs.registerPartials(path.join(__dirname, '/views/partials'));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.use('/', indexRouter);
-app.use('/index', indexRouter);
+app.use('/', homeRouter);
 app.use('/users', usersRouter);
 app.use('/about', aboutRouter);
 app.use('/checkout', checkoutRouter);
@@ -38,7 +39,7 @@ app.use('/faq', faqRouter);
 app.use('/products', productsRouter);
 app.use('/register', registerRouter);
 app.use('/signIn', signInRouter);
-app.use('/details', detailsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

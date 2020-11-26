@@ -1,12 +1,12 @@
 const productsModel = require('../models/productsModel');
+const detailsModel = require('../models/detailsModel');
 
-products = (req, res, next) => {
-  const products = productsModel.list();
-  res.render('products', {layout: 'layout', products});
+module.exports.products = (req, res, next) => {
+  
 };
 
-module.exports = {
-  products
+module.exports.details = (req, res, next) => {
+  
 };
 
   

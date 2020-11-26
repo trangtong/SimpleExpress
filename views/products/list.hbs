@@ -1,0 +1,87 @@
+<!--header-->
+{{> header}}
+<!--//header-->
+<!--breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Products</li>
+        </ol>
+    </div>
+</div>
+<!--//breadcrumbs-->
+<!--products-->
+<div class="products">
+    <div class="container">
+        <div class="col-md-9 product-model-sec">
+            {{#each list}}
+            <div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".5s">
+                <div class="new-top">
+                    <a href="/products/{{this.id}}"><img src="{{cover}}" class="img-responsive" alt="" /></a>
+                    <div class="new-text">
+                        <ul>
+                            <li><a href="/products/{{this.id}}">Quick View </a></li>
+                            <li><input type="number" class="item_quantity" min="1" value="1"></li>
+                            <li><a class="item_add" href="#"> Add to cart</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="new-bottom">
+                    <h5><a class="name" href="/products/{{this.id}}">{{title}} </a></h5>
+                    <div class="rating">
+                        <span class="on">☆</span>
+                        <span class="on">☆</span>
+                        <span class="on">☆</span>
+                        <span class="on">☆</span>
+                        <span>☆</span>
+                    </div>
+                    <div class="ofr">
+                        <p class="pric1"><del>${{basePrice}}</del></p>
+                        <p><span class="item_price">${{salePrice}}</span></p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{> filterSidebar}}
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!--//products-->
+<!--footer-->
+{{> footer}}
+<!--//footer-->
+<!-- the jScrollPane script -->
+<script type="text/javascript" src="javascripts/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" id="sourcecode">
+    $(function () {
+        $('.scroll-pane').jScrollPane();
+    });
+</script>
+<!-- //the jScrollPane script -->
+<script type="text/javascript" src="javascripts/jquery.mousewheel.js"></script>
+<!-- the mousewheel plugin -->
+<!--search jQuery-->
+<script src="javascripts/main.js"></script>
+<!--//search jQuery-->
+<!--smooth-scrolling-of-move-up-->
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+        };
+
+        $().UItoTop({ easingType: 'easeOutQuart' });
+
+    });
+</script>
+<!--//smooth-scrolling-of-move-up-->
+<!--Bootstrap core JavaScript
+    ================================================== -->
+<!--Placed at the end of the document so the pages load faster -->
+<script src="javascripts/bootstrap.js"></script>
