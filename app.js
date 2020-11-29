@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
+const db = require('MongoDB');
 
 const homeRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
