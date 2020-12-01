@@ -1,15 +1,15 @@
-const a = require("../MongoDB");
+const {db} = require("../mongodb");
 
-let result = [];
+module.exports.list = async () => {
+  const collection = db().collection("products");
+  const product  = await collection.find({}).toArray();
+  return product;
+};
 
-a.connect(async () => {
- 
-    const b = a.get().collection("products").find({});
-    await b.forEach(function (doc, err) {
-      result.push(doc);
-    });
-    console.log(result);
-    a.close();
+module.exports.get = async (slug) => {
+  const collection = db().collection("details");
+  const product = await collection.findOne({slug: slug});
+  return product;
+};
 
-});
- 
+  

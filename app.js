@@ -4,7 +4,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
-const db = require('MongoDB');
+const MongoClient = require('mongodb').MongoClient;
+//const {MongoClient} = require('mongodb');
+
+require('mongodb');
 
 const homeRouter = require('./routes/index');
 const usersRouter = require('./routes/users');

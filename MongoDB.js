@@ -1,35 +1,33 @@
 const MongoClient = require("mongodb").MongoClient;
 //const {MongoClient} = require('mongodb'); //same
 
-let database;
 const url =
   "mongodb+srv://Admin:Matkhau1@cluster0.mygsl.mongodb.net/mydatabase?retryWrites=true&w=majority";
 
- const client = new MongoClient(url, { useUnifiedTopology: true });
+  let database;
 
-module.exports.connect = function connect(callback) {
+const client = new MongoClient(url, { useUnifiedTopology: true });
+
+  module.exports.closeDb = function close() {
+    client.close();
+  };  
+
+async function connectDb() {
   try {
-   // MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
-     client.connect((err, client) => {//})
-      if (err) {
-        return;
-      }
-      database = client.db();
-      console.log("Connected...");
-      callback();
-    });
+    // MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
+    await client.connect();
+    database = client.db("mydatabase");
+    console.log("Connected...");
   } catch (err) {
     console.log("Error occurred while connecting to MongoDB Atlas...\n", err);
   }
-};
+}
 
-module.exports.get = function get() {
-  return database;
-};
+connectDb();
 
-module.exports.close = function close() {
-  client.close();
-};
+//const db = () => database;
+module.exports.db = () => database;
+
 
 // -------------------------------Test connection--------------------------------
 // MongoClient.connect(
