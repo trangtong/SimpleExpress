@@ -7,6 +7,7 @@ module.exports.index = async (req, res, next) => {
 }
 
 module.exports.details = async (req, res, next) => {
+    const list = await productsModel.list();
     const details = await productsModel.get(req.params.slug);
-    res.render('products/details', {details});
+    res.render('products/details',  {details, list});
 }

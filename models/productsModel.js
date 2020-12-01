@@ -1,4 +1,4 @@
-const {db} = require("../mongodb");
+const {db} = require("../db");
 
 module.exports.list = async () => {
   const collection = db().collection("products");

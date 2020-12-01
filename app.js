@@ -7,7 +7,7 @@ const hbs = require('hbs');
 const MongoClient = require('mongodb').MongoClient;
 //const {MongoClient} = require('mongodb');
 
-require('mongodb');
+require('./db');
 
 const homeRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
